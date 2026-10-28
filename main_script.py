@@ -1,13 +1,10 @@
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
+from system_promt.py import system_promt
 
 load_dotenv()
 
-with open("glava_1.txt", "r", encoding="utf-8") as f:
-    glava_1 = f.read()
-
-# system_promt = "Ты консуульант по ПДД РБ и ... вот текст ПДД" + glava_1 + ...
 # user_input = из телеграм бота приходит
 
 client = OpenAI(
@@ -26,5 +23,7 @@ response = client.chat.completions.create(
     extra_body={"thinking": {"type": "enabled"}},
 )
 
-print(response.choices[0].message.content)
+assistant_output = response.choices[0].message.content
+
+
 
