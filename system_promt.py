@@ -1,9 +1,28 @@
-# в цикле извлекаем текст всего ПДД, типа такого:
+from pathlib import Path
+import os
 
-#with open("glava_1.txt", "r", encoding="utf-8") as f:
-#    glava_1 = f.read()
+texts_list = []
+folder = Path("text_pdd/glavy_ppd")
+
+# в цикле извлекаем текст всего ПДД:
+for path in sorted(folder.glob("glava_*.txt")):
+    text = path.read_text(encoding="utf-8")
+    texts_list.append(text)
+
+texts = tuple(texts_list)
 
 
-text_system_promt = "Ты консуульант по ПДД РБ, должен отвечать только на основе текста ниже и тд... вот текст ПДД:"
+system_promt = "Ты консуульант по ПДД РБ, должен отвечать только на основе текста ниже и тд... вот текст ПДД:"
 
-system_promt = text_system_promt #+ glava_1 + glava_2 + ...
+for elem in texts_list:
+    system_promt = system_promt + "\n\n" + elem
+
+print(system_promt)
+
+
+
+
+
+
+
+
