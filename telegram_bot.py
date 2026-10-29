@@ -23,7 +23,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_input = update.message.text                 # входная переменная
     await update.message.chat.send_action("typing")  # "печатает..." в чате
 
-    answer = ask_llm(user_input)                     # выходная переменная
+    try:
+        answer = ask_llm(user_input)                 # выходная переменная
+    except Exception as e:
+        print("Ошибка:", e)
+        answer = f'Что-то пошло не так, сообщите в поддержку (@maths_enjoyer) эту ошибку "{e}"'
 
     await update.message.reply_text(answer)
 
