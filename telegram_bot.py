@@ -29,7 +29,20 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         print("Ошибка:", e)
         answer = f'Что-то пошло не так, сообщите в поддержку (@maths_enjoyer) эту ошибку "{e}"'
 
-    await update.message.reply_text(answer)
+    for part in split_text(answer):
+        await update.message.reply_text(part)
+
+def split_text(text, limit=4000):
+    parts = []
+    while len(text) > limit:
+        cut = text.rfind("\n", 0, limit)
+        if cut == -1:
+            cut = limit
+        parts.append(text[:cut])
+        text = text[cut:].lstrip("\n")
+    parts.append(text)
+
+    return parts
 
 
 def main():
