@@ -16,13 +16,3 @@ system_promt = "Ты консуульант по ПДД РБ, должен от�
 
 for elem in texts_list:
     system_promt = system_promt + "\n\n" + elem
-
-print(system_promt)
-
-
-
-
-
-
-
-

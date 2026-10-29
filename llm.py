@@ -24,4 +24,3 @@ def ask_llm(user_input):
     )
     
     return response.choices[0].message.content
-
