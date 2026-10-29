@@ -1,11 +1,9 @@
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
-from system_promt.py import system_promt
+from system_promt import system_promt
 
 load_dotenv()
-
-# user_input = из телеграм бота приходит
 
 client = OpenAI(
     api_key=os.environ.get('DEEPSEEK_API_KEY_PDD'),
@@ -24,6 +22,4 @@ response = client.chat.completions.create(
 )
 
 assistant_output = response.choices[0].message.content
-
-
 
