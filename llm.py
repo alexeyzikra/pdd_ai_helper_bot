@@ -2,9 +2,8 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 from system_promt import system_promt
+from config import DEEPSEEK_API_KEY_PDD
 
-
-load_dotenv()
 
 client = OpenAI(
     api_key=os.environ.get('DEEPSEEK_API_KEY_PDD'),
@@ -12,7 +11,7 @@ client = OpenAI(
 )
 
 def ask_llm(user_input):
-    
+
     response = client.chat.completions.create(
         model="deepseek-flash",
         messages=[
