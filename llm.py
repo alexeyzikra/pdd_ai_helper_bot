@@ -6,7 +6,7 @@ from config import DEEPSEEK_API_KEY_PDD
 
 
 client = OpenAI(
-    api_key=os.environ.get('DEEPSEEK_API_KEY_PDD'),
+    api_key=DEEPSEEK_API_KEY_PDD,
     base_url="https://api.deepseek.com",
 )
 
