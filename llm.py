@@ -1,4 +1,3 @@
-import os
 from openai import OpenAI
 from system_promt import system_promt
 from config import DEEPSEEK_API_KEY_PDD

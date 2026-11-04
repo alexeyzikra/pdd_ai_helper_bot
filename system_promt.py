@@ -1,5 +1,4 @@
 from pathlib import Path
-import os
 
 texts_list = []
 folder = Path("text_pdd/glavy_ppd")
